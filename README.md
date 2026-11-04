@@ -124,125 +124,16 @@ Every key can be changed in **Settings → Shortcuts** (desktop).
 |:-:|---|---|
 | 🪟 **Windows** | `Fox-Music-<version>-Windows-x64.exe` · `...-Windows-Portable.exe` | Windows 10/11, 64-bit. Custom setup wizard. |
 | 🤖 **Android** | `Fox-Music-<version>-Android.apk` | Android 8+. Allow *Install unknown apps* when asked. |
-| 🍎 **macOS** | `...-macOS-arm64.dmg` · `...-macOS-x64.dmg` | Build it on a Mac with one command (`bash tools/build-mac.sh`), or see below. |
+| 🍎 **macOS** | `...-macOS-arm64.dmg` · `...-macOS-x64.dmg` | Coming Soon |
 
 👉 **Get them from the [Releases page](../../releases/latest).**
+
+👉 **Get them from the [FoxMusic Website](https://foxmusic.in/).**
 
 > [!NOTE]
 > The apps are not code-signed yet. Windows shows a SmartScreen notice once - click **More info → Run anyway**. On a Mac, right-click the app → **Open** (or run `xattr -cr "/Applications/Fox Music.app"`).
 
 <img src="docs/assets/divider.svg" alt="" width="100%">
-
-## 🧩 How it works
-
-```mermaid
-flowchart LR
-  UI["React 19 + Vite UI<br/>(one codebase)"] --> E["Electron<br/>Windows · macOS"]
-  UI --> C["Capacitor 8<br/>Android"]
-  E --> Y1["yt-dlp<br/>YouTube search · stream · download"]
-  C --> Y2["NewPipe Extractor<br/>YouTube search · stream"]
-  E --> M["Mini player window"]
-  E --> R["Phone remote · HTTP API · MCP<br/>(off until you switch them on)"]
-  UI --> P["Plugins<br/>locked-down workers + permissions"]
-  C --> S["Foreground media service<br/>lock screen · wake lock"]
-  UI --> L["Lyrics engine<br/>LRCLIB → NetEase → lyrics.ovh"]
-  E --> D["Downloads → Music/Fox Music<br/>auto-added to library"]
-  C --> D
-```
-
-<details>
-<summary><b>📁 Project structure</b></summary>
-<br>
-
-```text
-foxmusic/
-├─ src/                 React app (shared by desktop and phone)
-│  ├─ components/       TopBar, Sidebar, LyricsView, ThemesCard, ...
-│  ├─ mobile/           Phone shell (tabs, full-screen player)
-│  ├─ compact/          Mini player window
-│  └─ lib/              api bridge, theme, lyrics, engine, titles, plugins
-├─ electron/            main.js + preload.js (windows, yt-dlp, downloads, IPC), remote.js (phone remote, API, MCP), discord.js
-├─ plugins/examples/    three working example plugins (see docs/PLUGINS.md)
-├─ android/             Capacitor project + native plugin (Java)
-├─ build/               icons, installer art, NSIS script, licence
-├─ tools/               icon + installer artwork generators
-└─ .github/workflows/   Mac build on GitHub's cloud Macs
-```
-
-</details>
-
-<img src="docs/assets/divider.svg" alt="" width="100%">
-
-## 🛠️ Build from source
-
-```bash
-git clone https://github.com/ashbornofficial/foxmusic.git
-cd foxmusic
-npm install
-
-npm run dev            # desktop app in development
-npm run dist:win       # Windows installer + portable   -> release/
-npm run dist:mac       # macOS dmg + zip (run on a Mac)
-npm run android:apk    # Android debug APK (JDK 21 + Android SDK)
-```
-
-<details>
-<summary><b>🍎 Have a Mac? One command</b></summary>
-<br>
-
-Install [Node.js](https://nodejs.org) (LTS), then in the project folder:
-
-```bash
-bash tools/build-mac.sh
-```
-
-It installs the packages, builds the app and opens the `release` folder with the `.dmg` and `.zip` for Apple Silicon (`arm64`) and Intel (`x64`). The app is not signed by Apple: right-click it → **Open** the first time (or `xattr -cr "/Applications/Fox Music.app"`).
-
-</details>
-
-<details>
-<summary><b>🍎 No Mac? Build the Mac version on GitHub</b></summary>
-<br>
-
-1. Push the repo (the workflow lives in `.github/workflows/build-mac.yml`).
-2. **Actions → Build macOS → Run workflow** (or push a tag like `v1.6.1`).
-3. After ~10 minutes download the `Fox-Music-macOS` artifact: `.dmg` + `.zip` for Intel and Apple Silicon.
-
-</details>
-
-<details>
-<summary><b>🤖 Android details</b></summary>
-<br>
-
-See [`ANDROID.md`](ANDROID.md): file import, NewPipe extractor, downloads to `Music/Fox Music`, background-play service and launcher shortcuts (`vanillamusic://developer`, `vanillamusic://search`).
-
-</details>
-
-<img src="docs/assets/divider.svg" alt="" width="100%">
-
-## 🗺️ Roadmap
-
-- [x] Full-screen synced lyrics
-- [x] Mini player (Windows & Mac)
-- [x] Downloads added to the library automatically
-- [x] Multi-source lyrics + smart title cleaning
-- [x] 17 looks, Trending & "Because you listened"
-- [x] Rebuilt Android background play
-- [x] Sleep timer with fade-out, sleep sounds and Android notification countdown
-- [x] Equalizer, crossfade, speed / pitch, Auto-DJ, stats and a wake-up alarm
-- [x] Custom shortcuts, richer stats, lyrics timing tools, "wrong version?" picker
-- [x] Custom JSON themes, playlist folders, JSON import / export, ListenBrainz, Discord status
-- [x] Phone remote, HTTP API, MCP server and artist pages
-- [x] Plugins
-- [x] Aurora glass look, faster search, backup & restore, YouTube playlist import, visualizer
-- [x] Renamed to **Fox Music** with a new logo, bundled yt-dlp, tray icon, smarter queue, Made-for-you mixes, Android equalizer
-- [ ] Ready-made macOS `.dmg` on the Releases page
-- [ ] YouTube playlist import on Android
-- [ ] A plugin store
-- [ ] Code-signed Windows installer
-- [ ] iOS
-- [ ] Manual lyrics (paste / `.lrc` file)
-- [x] Equalizer on Android
 
 Have an idea? Tell us on **[Discord](https://discord.gg/weRFDT6Ppf)** or open an issue.
 
