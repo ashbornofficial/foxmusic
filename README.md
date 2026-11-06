@@ -125,7 +125,7 @@ Every key can be changed in **Settings → Shortcuts** (desktop).
 |:-:|---|---|
 | 🪟 **Windows** | `Fox-Music-<version>-Windows-x64.exe` · `...-Windows-Portable.exe` | Windows 10/11, 64-bit. Custom setup wizard. |
 | 🤖 **Android** | `Fox-Music-<version>-Android.apk` | Android 8+. Allow *Install unknown apps* when asked. |
-| 🍎 **macOS** | `...-macOS-arm64.dmg` · `...-macOS-x64.dmg` | Build it on a Mac with one command (`bash tools/build-mac.sh`), or see below. |
+| 🍎 **macOS** | `...-macOS-arm64.dmg` · `...-macOS-x64.dmg` | Coming Soon. |
 
 👉 **Get them from the [Releases page](../../releases/latest).**
 👉 **Get them from the [WEBSITE](https://foxmusic.in/).**
