@@ -19,7 +19,7 @@
 ![React](https://img.shields.io/badge/React_19-20232A?style=flat-square&logo=react&logoColor=61DAFB)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)
 ![Capacitor](https://img.shields.io/badge/Capacitor_8-119EFF?style=flat-square&logo=capacitor&logoColor=white)
-![Version](https://img.shields.io/badge/version-1.13-8b6cff?style=flat-square)
+![Version](https://img.shields.io/badge/version-1.14-8b6cff?style=flat-square)
 ![Free](https://img.shields.io/badge/price-free-34d399?style=flat-square)
 
 <img src="docs/assets/stats.svg" alt="3 platforms, 17 looks, 0 ads, 100% free" width="760">
@@ -97,6 +97,7 @@
 | 🔗 | **ListenBrainz and Discord** | Optional: send your listening to ListenBrainz and show "Listening to…" on Discord (desktop). |
 | 🎹 | **Your own shortcuts, better lyrics** | Rebind every key; nudge lyric timing per song, change text size, switch auto-scroll. |
 | 🌙 | **Sleep timer** | 5 min - 12 h, end of song / queue, or N songs. Volume fade-out, last-song fade, one-tap +10 min card, offline rain / ocean / fan sounds, Android notification countdown. Press <kbd>T</kbd>. |
+| 🔔 | **Update notice** | Windows and Android tell you when a new version is out (once a day, or **About → Check for updates**). You choose when to download. |
 | 🔒 | **Private by design** | No account, no ads, no analytics. Your library stays on your device. |
 
 <details>
@@ -124,16 +125,17 @@ Every key can be changed in **Settings → Shortcuts** (desktop).
 |:-:|---|---|
 | 🪟 **Windows** | `Fox-Music-<version>-Windows-x64.exe` · `...-Windows-Portable.exe` | Windows 10/11, 64-bit. Custom setup wizard. |
 | 🤖 **Android** | `Fox-Music-<version>-Android.apk` | Android 8+. Allow *Install unknown apps* when asked. |
-| 🍎 **macOS** | `...-macOS-arm64.dmg` · `...-macOS-x64.dmg` | Coming Soon |
+| 🍎 **macOS** | `...-macOS-arm64.dmg` · `...-macOS-x64.dmg` | Build it on a Mac with one command (`bash tools/build-mac.sh`), or see below. |
 
 👉 **Get them from the [Releases page](../../releases/latest).**
-
-👉 **Get them from the [FoxMusic Website](https://foxmusic.in/).**
+👉 **Get them from the [WEBSITE](https://foxmusic.in/).**
 
 > [!NOTE]
 > The apps are not code-signed yet. Windows shows a SmartScreen notice once - click **More info → Run anyway**. On a Mac, right-click the app → **Open** (or run `xattr -cr "/Applications/Fox Music.app"`).
 
 <img src="docs/assets/divider.svg" alt="" width="100%">
+
+
 
 Have an idea? Tell us on **[Discord](https://discord.gg/weRFDT6Ppf)** or open an issue.
 
